@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Radio Soulac - La liberté qui s'écoute</title>
+  <meta name="description" content="Radio Soulac - La liberté qui s'écoute. Écoutez le live, découvrez les émissions et retrouvez les podcasts." />
+  <style>
+    :root {
+      --bg: #071a2f;
+      --bg-soft: #0c2744;
+      --card: rgba(255, 255, 255, 0.08);
+      --card-border: rgba(255, 255, 255, 0.12);
+      --text: #f5fbff;
+      --muted: #c5d8e8;
+      --primary: #1fd6ff;
+      --secondary: #13b8d3;
+      --accent: #7ef9ff;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      --radius: 18px;
+      --max-width: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(31, 214, 255, 0.18), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(126, 249, 255, 0.14), transparent 25%),
+        linear-gradient(180deg, #04101f, #082341 45%, #06172b 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(4, 16, 31, 0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.06);
+      padding: 6px;
+      box-shadow: var(--shadow);
+    }
+
+    .brand-text h1 {
+      font-size: 1.15rem;
+      line-height: 1.1;
+    }
+
+    .brand-text p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--muted);
+      font-weight: bold;
+      transition: 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      padding: 70px 0 40px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .hero-card,
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-text {
+      padding: 36px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      background: rgba(31, 214, 255, 0.16);
+      border: 1px solid rgba(31, 214, 255, 0.35);
+      border-radius: 999px;
+      color: var(--accent);
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+    }
+
+    .hero-text h2 {
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+
+    .hero-text h2 span {
+      color: var(--primary);
+    }
+
+    .hero-text p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 650px;
+      margin-bottom: 28px;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 20px;
+      border-radius: 12px;
+      font-weight: bold;
+      border: 1px solid transparent;
+      transition: 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #05233b;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+    }
+
+    .btn-outline {
+      border-color: rgba(255,255,255,0.18);
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero-logo {
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100%;
+    }
+
+    .hero-logo img {
+      max-width: 100%;
+      max-height: 440px;
+      object-fit: contain;
+      filter: drop-shadow(0 16px 30px rgba(0,0,0,0.35));
+    }
+
+    section {
+      padding: 30px 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .live-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .player-card {
+      padding: 28px;
+    }
+
+    .player-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #9dffb0;
+      background: rgba(157,255,176,0.08);
+      border: 1px solid rgba(157,255,176,0.18);
+      padding: 8px 12px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+      font-size: 0.92rem;
+      font-weight: bold;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #4eff78;
+      box-shadow: 0 0 10px #4eff78;
+    }
+
+    .player-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+    }
+
+    .player-card p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    audio {
+      width: 100%;
+      margin: 16px 0 20px;
+      border-radius: 10px;
+    }
+
+    .mini-infos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .mini-box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 16px;
+      border-radius: 14px;
+      text-align: center;
+    }
+
+    .mini-box strong {
+      display: block;
+      font-size: 1.2rem;
+      color: var(--accent);
+    }
+
+    .mini-box span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .now-card {
+      padding: 28px;
+    }
+
+    .now-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+    }
+
+    .show-box {
+      background: linear-gradient(135deg, rgba(31,214,255,0.14), rgba(126,249,255,0.08));
+      border: 1px solid rgba(31,214,255,0.2);
+      padding: 20px;
+      border-radius: 16px;
+      margin-bottom: 16px;
+    }
+
+    .show-box h4 {
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+    }
+
+    .show-box p {
+      color: var(--muted);
+    }
+
+    .schedule-grid,
+    .podcast-grid,
+    .contact-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .schedule-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .schedule-card {
+      padding: 22px;
+    }
+
+    .schedule-card h3 {
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .schedule-item {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .schedule-item:last-child {
+      border-bottom: none;
+    }
+
+    .schedule-item strong {
+      display: block;
+      font-size: 1rem;
+    }
+
+    .schedule-item span {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .podcast-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .podcast-card {
+      padding: 22px;
+    }
+
+    .podcast-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .podcast-card p {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .contact-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .contact-card {
+      padding: 26px;
+    }
+
+    .contact-card p,
+    .contact-card li {
+      color: var(--muted);
+    }
+
+    .contact-card ul {
+      list-style: none;
+      margin-top: 12px;
+    }
+
+    .contact-card li + li {
+      margin-top: 10px;
+    }
+
+    footer {
+      margin-top: 30px;
+      padding: 30px 0 50px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .live-grid,
+      .schedule-grid,
+      .podcast-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 40px;
+      }
+
+      .hero-logo img {
+        max-height: 320px;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .brand img {
+        width: 52px;
+        height: 52px;
+      }
+
+      .hero-text,
+      .player-card,
+      .now-card,
+      .schedule-card,
+      .podcast-card,
+      .contact-card {
+        padding: 20px;
+      }
+
+      .mini-infos {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-text h2 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <a href="#top" class="brand">
+        <img src="logo-radio-soulac.jpg" alt="Logo Radio Soulac">
+        <div class="brand-text">
+          <h1>Radio Soulac</h1>
+          <p>La liberté qui s'écoute</p>
+        </div>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="#live">Écouter</a></li>
+          <li><a href="#programmes">Programmes</a></li>
+          <li><a href="#podcasts">Podcasts</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-card hero-text">
+          <div class="badge">Radio locale • Live • Podcasts</div>
+          <h2>Bienvenue sur <span>Radio Soulac</span></h2>
+          <p>
+            Retrouvez le direct, les émissions, les actualités locales et les podcasts
+            de votre radio. Une expérience simple, moderne et accessible sur ordinateur,
+            tablette et mobile.
+          </p>
+
+          <div class="cta-group">
+            <a href="#live" class="btn btn-primary">Écouter en direct</a>
+            <a href="#programmes" class="btn btn-outline">Voir les programmes</a>
+          </div>
+        </div>
+
+        <div class="hero-card hero-logo">
+          <img src="logo-radio-soulac.jpg" alt="Logo officiel Radio Soulac">
+        </div>
+      </div>
+    </section>
+
+    <section id="live">
+      <div class="container">
+        <h2 class="section-title">Le direct</h2>
+        <p class="section-subtitle">
+          Lancez le player et écoutez Radio Soulac en direct.
+        </p>
+
+        <div class="live-grid">
+          <div class="card player-card">
+            <div class="player-status">
+              <span class="dot"></span>
+              EN DIRECT
+            </div>
+
+            <h3>Écoutez maintenant</h3>
+            <p>
+              Remplacez l’URL du flux audio par votre lien de streaming radio.
+            </p>
+
+            <audio controls>
+              <source src="https://stream.zeno.fm/your-stream-url" type="audio/mpeg">
+              Votre navigateur ne prend pas en charge l'audio HTML5.
+            </audio>
+
+            <a class="btn btn-primary" href="https://stream.zeno.fm/your-stream-url" target="_blank" rel="noopener noreferrer">
+              Ouvrir le flux
+            </a>
+
+            <div class="mini-infos">
+              <div class="mini-box">
+                <strong>24/7</strong>
+                <span>Diffusion continue</span>
+              </div>
+              <div class="mini-box">
+                <strong>FM / Web</strong>
+                <span>Disponible partout</span>
+              </div>
+              <div class="mini-box">
+                <strong>Mobile</strong>
+                <span>Écoute sur smartphone</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card now-card">
+            <h3>À l’antenne</h3>
+
+            <div class="show-box">
+              <h4>Morning Soulac</h4>
+              <p>Du lundi au vendredi • 07:00 à 10:00</p>
+            </div>
+
+            <div class="show-box">
+              <h4>Infos & Océan</h4>
+              <p>Actualité locale, météo, culture et vie de la région.</p>
+            </div>
+
+            <div class="show-box">
+              <h4>Playlist du moment</h4>
+              <p>Pop, soul, groove, découvertes et classiques incontournables.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="programmes">
+      <div class="container">
+        <h2 class="section-title">Les programmes</h2>
+        <p class="section-subtitle">
+          Exemple de grille à personnaliser selon vos émissions.
+        </p>
+
+        <div class="schedule-grid">
+          <div class="card schedule-card">
+            <h3>Lundi</h3>
+            <div class="schedule-item">
+              <strong>07:00 - 10:00 • Morning Soulac</strong>
+              <span>Réveil musical et infos locales</span>
+            </div>
+            <div class="schedule-item">
+              <strong>12:00 - 13:00 • Le Midi Libre</strong>
+              <span>Invités, chroniques et actualités</span>
+            </div>
+            <div class="schedule-item">
+              <strong>18:00 - 20:00 • Sunset Vibes</strong>
+              <span>Ambiance détente et nouveautés</span>
+            </div>
+          </div>
+
+          <div class="card schedule-card">
+            <h3>Mercredi</h3>
+            <div class="schedule-item">
+              <strong>08:00 - 10:00 • Bonjour Soulac</strong>
+              <span>Magazine local et agenda</span>
+            </div>
+            <div class="schedule-item">
+              <strong>14:00 - 15:00 • Génération Podcast</strong>
+              <span>Talk, interviews et contenus numériques</span>
+            </div>
+            <div class="schedule-item">
+              <strong>20:00 - 22:00 • Mix Océan</strong>
+              <span>Set musical et ambiance nocturne</span>
+            </div>
+          </div>
+
+          <div class="card schedule-card">
+            <h3>Week-end</h3>
+            <div class="schedule-item">
+              <strong>09:00 - 11:00 • Café du Littoral</strong>
+              <span>Émissions conviviales du week-end</span>
+            </div>
+            <div class="schedule-item">
+              <strong>16:00 - 18:00 • Soulac Découverte</strong>
+              <span>Culture, tourisme et patrimoine</span>
+            </div>
+            <div class="schedule-item">
+              <strong>21:00 - 23:00 • Nuit Radio Soulac</strong>
+              <span>Playlist chill et ambiance bord de mer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="podcasts">
+      <div class="container">
+        <h2 class="section-title">Podcasts</h2>
+        <p class="section-subtitle">
+          Mettez ici vos replays, interviews et émissions à la demande.
+        </p>
+
+        <div class="podcast-grid">
+          <div class="card podcast-card">
+            <h3>Les voix de Soulac</h3>
+            <p>
+              Interviews locales, portraits et initiatives du territoire.
+            </p>
+            <a href="#" class="btn btn-outline">Écouter</a>
+          </div>
+
+          <div class="card podcast-card">
+            <h3>Chroniques Océan</h3>
+            <p>
+              Environnement, mer, nature et patrimoine du littoral.
+            </p>
+            <a href="#" class="btn btn-outline">Écouter</a>
+          </div>
+
+          <div class="card podcast-card">
+            <h3>Sessions Live</h3>
+            <p>
+              Retrouvez les meilleurs passages musicaux et invités de l’antenne.
+            </p>
+            <a href="#" class="btn btn-outline">Écouter</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-subtitle">
+          Ajoutez vos coordonnées et vos réseaux sociaux.
+        </p>
+
+        <div class="contact-grid">
+          <div class="card contact-card">
+            <h3>Nous écrire</h3>
+            <p>
+              Pour toute demande, partenariat, intervention ou proposition d’émission.
+            </p>
+            <ul>
+              <li><strong>Email :</strong> contact@radiosoulac.fr</li>
+              <li><strong>Téléphone :</strong> 05 00 00 00 00</li>
+              <li><strong>Adresse :</strong> Soulac-sur-Mer, France</li>
+            </ul>
+          </div>
+
+          <div class="card contact-card">
+            <h3>Réseaux sociaux</h3>
+            <p>Remplacez les liens par vos vraies pages.</p>
+            <ul>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">Instagram</a></li>
+              <li><a href="#">YouTube</a></li>
+              <li><a href="#">TikTok</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Radio Soulac — La liberté qui s’écoute</p>
+    </div>
+  </footer>
+
+</body>
+</html>
